@@ -38,3 +38,35 @@ The framework is built around robust and production-ready ML engineering princip
 # - Strict negative prompt conditioning to suppress artifact generation (rulers, hairs, text, watermarks).
 # - Memory Guardrails (torch.amp.autocast & torch.cuda.empty_cache) preventing CUDA Out-Of-Memory exceptions on large batches.
 # - Synthetic-to-ISIC Metadata Compiler: Outputs a clean metadata_synth.csv matching ISIC schema format automatically.
+```
+
+### Script Execution Example
+
+To generate synthetic data scaled proportionally to the base dataset metrics:
+
+```python
+# python generate_dataset.py
+```
+
+---
+
+## 📈 Key Research Insights
+
+1. **The Alignment Gap**: High scores in conventional generative metrics (like general FID) do not automatically correlate with downstream classifier gains. Visual realism does not equal statistical utility for an AI model.
+2. **Proportional Scaling Wins**: Proportional dataset scaling (integrating synthetic data as 60%–90% of the training set) outperformed rigid minority-class balancing, achieving a +2.4% increase in balanced accuracy over the baseline.
+3. **Domain Specificity Matters**: Implementing BioMedCLIP for feature evaluation revealed much clearer correlation trend-lines regarding classifier accuracy compared to standard ImageNet-based Inception encoders.
+
+### Metric Correlation Analysis
+
+![BioMedCLIP vs Classifier Accuracy](./assets/bio_metrics.jpg)
+
+---
+
+## 📜 Academic Context & Data Availability
+
+This research project was conducted as part of a Master's Thesis at the **Technische Universität Ilmenau**. 
+
+* **Dataset:** The research utilizes the publicly available **BCN20000** dataset (available via the ISIC Archive). 
+* **Weights:** Pre-trained weights for the final fine-tuned LoRA models are omitted due to file size constraints but can be provided for academic replication upon reasonable request.
+
+For academic inquiries, collaboration, or professional networking regarding Generative AI in MedTech, feel free to connect via [LinkedIn](https://www.linkedin.com/in/natalia-shevtsova99/).
